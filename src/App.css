@@ -1,0 +1,14 @@
+.App {
+  background-color: rgb(126, 124, 124);
+  width: 80%;
+  margin: auto;
+  color: white;
+  /* height: 100vh; */
+}
+.text-right {
+  margin: auto;
+}
+
+.ql-formats {
+  color: white;
+}

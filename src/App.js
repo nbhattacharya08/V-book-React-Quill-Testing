@@ -1,10 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect, useRef } from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import EditorToolbar, { modules, formats } from "./EdditorToolbar";
 import "./App.css"
 
 function App() {
+  const targetRef = useRef();
+  const [dimensions, setDimensions] = useState({ height: 0 });
+  const [initVal, setInitVal] = useState(0);
+  const [height, setHeight] = useState({});
+  useLayoutEffect(() => {
+    if (targetRef.current) {
+      setDimensions({
+        // width: targetRef.current.offsetWidth,
+        height: targetRef.current.offsetHeight
+      });
+      setHeight({
+        height: targetRef.current.offsetHeight + "px",
+        border: "1px solid red"
+      })
+    }
+
+  }, []);
+
+  const increaseHeight = () => {
+    let totalHeight = Number(dimensions.height) + Number(initVal);
+    setDimensions({
+      // width: targetRef.current.offsetWidth,
+      height: totalHeight
+    });
+    setHeight({
+      height: totalHeight + "px",
+      border: "1px solid red"
+    })
+    setInitVal(0);
+  }
+
   // const [quill, setQuill] = useState();
   // const TOOL_OPTIONS = [
   //   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -43,11 +74,14 @@ function App() {
     });
   }
   const ondescription = (value) => {
+    setInitVal(userInfo.description);
+    console.log(height);
     setuserInfo({
       ...userInfo,
       description: value
     });
   }
+
   const oninformation = (value) => {
     setuserInfo({
       ...userInfo,
@@ -58,6 +92,7 @@ function App() {
   const addDetails = async (event) => {
     try {
       event.preventDefault();
+      // console.log(this.refs.inner.clientHeight);
       event.persist();
       if (userInfo.description.length < 50) {
         setError('Required, Add description minimum length 50 characters');
@@ -85,7 +120,9 @@ function App() {
                   <input type="text" name="author" value={userInfo.author} onChange={onChangeValue} className="form-control" placeholder="author" required />
                 </div>
                 <div className="clearfix"></div>
-                <div className="form-group col-md-12 editor" style={{ margin: "auto", minHeight: "80vh", borderBottom: "none" }}>
+
+                {/* Controlling its height */}
+                <div className="form-group col-md-12 editor" style={{ margin: "auto", height: { height }, borderBottom: "none" }} ref={targetRef}>
                   <label className="font-weight-bold"> Page Content <span className="required"> * </span> </label>
                   <EditorToolbar toolbarId={'t1'} />
                   <ReactQuill
@@ -97,6 +134,8 @@ function App() {
                     formats={formats}
                   />
                 </div>
+
+
                 {/* <br /> */}
                 {/* <div className="form-group col-md-12 editor">
                   <label className="font-weight-bold"> Additional Information  </label>

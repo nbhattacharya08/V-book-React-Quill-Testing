@@ -1,5 +1,6 @@
 import React from "react";
 import { Quill } from "react-quill";
+import "./App.css"
 
 // Custom Undo button icon component for Quill editor. You can import it directly from 'quill/assets/icons/undo.svg' but I found that a number of loaders do not handle them correctly
 const CustomUndo = () => (
@@ -94,7 +95,7 @@ export const formats = [
 export const QuillToolbar = (props) => {
     return (<>
         {props.toolbarId !== undefined &&
-            <div id={props.toolbarId}>
+            <div id={props.toolbarId} className="edditorToolbar">
 
                 <span className="ql-formats">
                     <button className="ql-bold" />
