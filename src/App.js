@@ -1,66 +1,17 @@
-import React, { useState, useLayoutEffect, useRef } from "react";
+import React, { useState, useLayoutEffect, useRef, useEffect } from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import EditorToolbar, { modules, formats } from "./EdditorToolbar";
 import "./App.css"
 
 function App() {
-  const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ height: 0 });
-  const [initVal, setInitVal] = useState(0);
+
   const [height, setHeight] = useState({});
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        // width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight
-      });
-      setHeight({
-        height: targetRef.current.offsetHeight + "px",
-        border: "1px solid red"
-      })
-    }
+  const [intialVal, setInitVal] = useState({});
 
-  }, []);
 
-  const increaseHeight = () => {
-    let totalHeight = Number(dimensions.height) + Number(initVal);
-    setDimensions({
-      // width: targetRef.current.offsetWidth,
-      height: totalHeight
-    });
-    setHeight({
-      height: totalHeight + "px",
-      border: "1px solid red"
-    })
-    setInitVal(0);
-  }
 
-  // const [quill, setQuill] = useState();
-  // const TOOL_OPTIONS = [
-  //   [{ header: [1, 2, 3, 4, 5, 6, false] }],
-  //   [{ list: "ordered" }, { list: "bullet" }],
-  //   ['bold', 'underline', 'strike'],
-  //   [{ color: [] }, { background: [] }],
-  //   [{ script: "sub" }, { script: "super" }],
-  //   [{ align: [] }],
-  //   ["image", "blockquote", "code-block", "video"],
-  //   ["clean"]
-  // ]
 
-  // const wrapperRef = useCallback((wrapper) => {
-  //   if (wrapper == null) return
-  //   wrapperRef.innerHTML = "";
-  //   const editor = document.createElement("div");
-  //   wrapper.append(editor);
-  //   const q = new Quill(editor, {
-  //     theme: 'snow',
-  //     modules: { toolbar: TOOL_OPTIONS }
-  //   });
-  //   setQuill(q);
-  // }, [])
-
-  // let history = useHistory();
   const [userInfo, setuserInfo] = useState({
     title: '',
     author: '',
@@ -74,12 +25,22 @@ function App() {
     });
   }
   const ondescription = (value) => {
-    setInitVal(userInfo.description);
-    console.log(height);
+    console.log(value);
+    let totalHeight = (document.getElementsByClassName("quill")[0].clientHeight);
+    if (height > 900) {
+      window.alert("You have reached the max word-limit");
+    }
+    console.log(totalHeight);
+    setHeight(totalHeight);
+    // console.log(height)
+
+    if (totalHeight)
+      setInitVal(userInfo.description);
     setuserInfo({
       ...userInfo,
       description: value
     });
+
   }
 
   const oninformation = (value) => {
@@ -109,21 +70,20 @@ function App() {
         <div className="container">
           <div className="row">
             <form onSubmit={addDetails} className="update__forms">
-              {/* <h3 className="myaccount-content"> Add  </h3> */}
               <div className="form-row">
-                <div className="form-group col-md-12">
-                  <label className="font-weight-bold"> Chapter Name <span className="required"> * </span> </label>
+                <div className="chapter_name form-group col-md-12 ">
+                  <label className="font-weight-bold"><strong> Chapter Name</strong> <span className="required"> * </span> </label>
                   <input type="text" name="title" value={userInfo.title} onChange={onChangeValue} className="form-control" placeholder="Title" required />
                 </div>
                 <div className="form-group col-md-12">
-                  <label className="font-weight-bold"> Author <span className="required"> * </span> </label>
+                  <label className="font-weight-bold"><strong>Author</strong>  <span className="required"> * </span> </label>
                   <input type="text" name="author" value={userInfo.author} onChange={onChangeValue} className="form-control" placeholder="author" required />
                 </div>
                 <div className="clearfix"></div>
 
                 {/* Controlling its height */}
-                <div className="form-group col-md-12 editor" style={{ margin: "auto", height: { height }, borderBottom: "none" }} ref={targetRef}>
-                  <label className="font-weight-bold"> Page Content <span className="required"> * </span> </label>
+                <div className="editor form-group col-md-12 ">
+                  <label className="font-weight-bold"><strong>Page Content </strong> <span className="required"> * </span> </label>
                   <EditorToolbar toolbarId={'t1'} />
                   <ReactQuill
                     theme="snow"
@@ -134,21 +94,6 @@ function App() {
                     formats={formats}
                   />
                 </div>
-
-
-                {/* <br /> */}
-                {/* <div className="form-group col-md-12 editor">
-                  <label className="font-weight-bold"> Additional Information  </label>
-                  <EditorToolbar toolbarId={'t2'} />
-                  <ReactQuill
-                    theme="snow"
-                    value={userInfo.information}
-                    onChange={oninformation}
-                    placeholder={"Write something awesome..."}
-                    modules={modules('t2')}
-                    formats={formats}
-                  />
-                </div> */}
                 <br />
                 {isError !== null && <div className="errors"> {isError} </div>}
                 <div className="form-group col-sm-12 text-right">

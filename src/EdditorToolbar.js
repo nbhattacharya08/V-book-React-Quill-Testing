@@ -104,12 +104,12 @@ export const QuillToolbar = (props) => {
                     <select className="ql-font">
                         <option value="arial" > Arial </option>
                     </select>
-                    <select className="ql-size">
+                    {/* <select className="ql-size">
                         <option value="extra-small">Extra Small</option>
                         <option value="small">Small</option>
                         <option value="medium" selected>Medium</option>
                         <option value="large">Large</option>
-                    </select>
+                    </select> */}
                     <select className="ql-header">
                         <option value="1">Heading 1</option>
                         <option value="2">Heading 2</option>
@@ -138,7 +138,7 @@ export const QuillToolbar = (props) => {
                 <span className="ql-formats">
                     <button className="ql-link" />
                     <button className="ql-image" />
-                    <button className="ql-video" />
+                    <a><button className="ql-video" /></a>
                     {/* <button className="q1-audio" /> */}
                 </span>
                 {/* <span className="ql-formats">
@@ -159,3 +159,15 @@ export const QuillToolbar = (props) => {
     </>)
 }
 export default QuillToolbar;
+
+
+
+
+
+
+
+// var body = document.body,
+//     html = document.documentElement;
+// 92_prajak sen8:13 PM
+// var height = Math.max( body.scrollHeight, body.offsetHeight,
+//                        html.clientHeight, html.scrollHeight, html.offsetHeight );

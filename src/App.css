@@ -1,14 +1,49 @@
-.App {
-  background-color: rgb(126, 124, 124);
-  width: 80%;
-  margin: auto;
-  color: white;
-  /* height: 100vh; */
-}
-.text-right {
-  margin: auto;
+.app {
+  background-color: antiquewhite;
 }
 
-.ql-formats {
-  color: white;
+.row {
+  width: 70%;
+  margin: auto;
+}
+.form-group {
+  height: 32px;
+  width: 100%;
+}
+.chapter_name > label {
+  width: 30%;
+}
+
+.update__forms {
+  background-color: #fff;
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.4);
+  margin-top: 2%;
+  padding: 16px;
+}
+
+.editor {
+  height: 140vh;
+}
+/* .ql-blank {
+  border-bottom: none;
+  width: 100vh;
+} */
+/* .edditorToolbar {
+  border-bottom: 1px solid #000;
+} */
+/* .ql-editor {
+  height: 130vh;
+} */
+.text-right > button {
+  font-size: 1.5rem;
+  box-shadow: 2px 2px 2px 2px rgb(216, 216, 250);
+  margin-right: 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+  padding: 8px;
+}
+.text-right > button:hover {
+  cursor: pointer;
+  background-color: rgb(228, 226, 226);
 }
