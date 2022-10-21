@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom";
+import "./Home.css"
 
 function Home() {
     const navigate = useNavigate();
