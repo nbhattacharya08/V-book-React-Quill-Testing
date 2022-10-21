@@ -101,9 +101,9 @@ export const QuillToolbar = (props) => {
                     <button className="ql-bold" />
                 </span>
                 <span className="ql-formats">
-                    <select className="ql-font">
+                    {/* <select className="ql-font">
                         <option value="arial" > Arial </option>
-                    </select>
+                    </select> */}
                     {/* <select className="ql-size">
                         <option value="extra-small">Extra Small</option>
                         <option value="small">Small</option>
@@ -111,12 +111,12 @@ export const QuillToolbar = (props) => {
                         <option value="large">Large</option>
                     </select> */}
                     <select className="ql-header">
-                        <option value="1">Heading 1</option>
-                        <option value="2">Heading 2</option>
-                        <option value="3">Heading 3</option>
-                        <option value="4">Heading 4</option>
-                        <option value="5">Heading 5</option>
-                        <option value="6">Heading 6</option>
+                        {/* <option value="1">Heading 1</option> */}
+                        {/* <option value="2">Heading 2</option> */}
+                        <option value="3">Heading </option>
+                        <option value="4">Sub-Heading </option>
+                        {/* <option value="5">Heading 5</option> */}
+                        {/* <option value="6">Heading 6</option> */}
                         <option value="" selected>Paragraph</option>
                     </select>
                 </span>
@@ -138,7 +138,7 @@ export const QuillToolbar = (props) => {
                 <span className="ql-formats">
                     <button className="ql-link" />
                     <button className="ql-image" />
-                    <a><button className="ql-video" /></a>
+                    {/* <a><button className="ql-video" /></a> */}
                     {/* <button className="q1-audio" /> */}
                 </span>
                 {/* <span className="ql-formats">
@@ -146,14 +146,14 @@ export const QuillToolbar = (props) => {
                     <button className="ql-code-block" />
                     <button className="ql-clean" />
                 </span> */}
-                <span className="ql-formats">
+                {/* <span className="ql-formats">
                     <button className="ql-undo">
                         <CustomUndo />
                     </button>
                     <button className="ql-redo">
                         <CustomRedo />
                     </button>
-                </span>
+                </span> */}
             </div>
         }
     </>)

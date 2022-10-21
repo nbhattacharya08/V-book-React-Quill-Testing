@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import EditorToolbar, { modules, formats } from "./EdditorToolbar";
 import "./App.css"
+import Home from "./Home";
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
   const ondescription = (value) => {
     console.log(value);
     let totalHeight = (document.getElementsByClassName("quill")[0].clientHeight);
-    if (height > 900) {
+    if (height > 800) {
       window.alert("You have reached the max word-limit");
     }
     console.log(totalHeight);
@@ -65,13 +66,13 @@ function App() {
 
   return (
     <>
-
+      {/* <Home /> */}
       <div className="App">
         <div className="container">
           <div className="row">
             <form onSubmit={addDetails} className="update__forms">
               <div className="form-row">
-                <div className="chapter_name form-group col-md-12 ">
+                {/* <div className="chapter_name form-group col-md-12 ">
                   <label className="font-weight-bold"><strong> Chapter Name</strong> <span className="required"> * </span> </label>
                   <input type="text" name="title" value={userInfo.title} onChange={onChangeValue} className="form-control" placeholder="Title" required />
                 </div>
@@ -79,7 +80,7 @@ function App() {
                   <label className="font-weight-bold"><strong>Author</strong>  <span className="required"> * </span> </label>
                   <input type="text" name="author" value={userInfo.author} onChange={onChangeValue} className="form-control" placeholder="author" required />
                 </div>
-                <div className="clearfix"></div>
+                <div className="clearfix"></div> */}
 
                 {/* Controlling its height */}
                 <div className="editor form-group col-md-12 ">
