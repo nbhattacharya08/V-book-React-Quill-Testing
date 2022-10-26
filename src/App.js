@@ -93,6 +93,7 @@ function App() {
                     placeholder={"Write something awesome..."}
                     modules={modules('t1')}
                     formats={formats}
+                    style={{height:400,width:450,textAlign:"center",justifyContent:30,}}
                   />
                 </div>
                 <br />
